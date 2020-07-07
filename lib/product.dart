@@ -13,7 +13,7 @@ class ShoppingListItem extends StatelessWidget {
   final bool inCart;
   final CartChangedCallback callback;
 
-  ShoppingListItem({Product product, this.inCart, this.callback})
+  ShoppingListItem(Product product, this.inCart, this.callback)
       : product = product,
         super(key: new ObjectKey(product));
 
@@ -84,9 +84,9 @@ class _ShoppingListState extends State<ShoppingList> {
         padding: EdgeInsets.symmetric(vertical: 8),
         children: widget.products.map((Product product) {
           return new ShoppingListItem(
-            product: product,
-            inCart: _shoppingCart.contains(product),
-            callback: _handleCartChanged,
+            product,
+            _shoppingCart.contains(product),
+            _handleCartChanged,
           );
         }).toList(),
       ),
